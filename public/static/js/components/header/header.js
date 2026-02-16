@@ -19,7 +19,10 @@ export function renderHeadeer() {
 
     header.innerHTML = `
     <div class="logo">
-      <a href="#" id="homeLink">GraphQL</a>
+      <a href="#" id="homeLink">
+        <img src="static/svg/01.svg" alt="GraphQL Logo" class="logo-svg">
+        <span class="logo-text">GraphQL</span>
+      </a>
     </div>
 
     <div class="header-controls">

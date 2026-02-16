@@ -1,4 +1,5 @@
 import { renderHeadeer } from './components/header/header.js';
+import { renderFooter } from './components/footer/footer.js';
 import { initTheme } from './utils/theme.js';
 import { isLoggedIn } from './utils/jwt.js';
 import { renderProfileView } from './components/profile/profileView.js';
@@ -16,6 +17,9 @@ export function initApp() {
     } else {
         renderSignInView();
     }
+
+    // Render footer
+    renderFooter();
 
     //listen for auth status changes to update the header
     window.addEventListener('storage', (event) => {
