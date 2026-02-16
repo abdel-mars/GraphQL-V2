@@ -36,13 +36,36 @@ export async function renderProfileView() {
 
   setTimeout(() => {
     profileContent.innerHTML = `
-      <div class="profile-header">
-        <h2>Welcome to Your Profile</h2>
+      <div class="top-welcome">
+        <h1>Welcome <span id="userName"></span></h1>
       </div>
 
-      <div class="welcome-message">
-        <h1>Welcome to Your Dashboard</h1>
-        <p>Track your progress, view your stats, and explore your achievements</p>
+      <div class="profile-card-section">
+        <div class="profile-card">
+          <div class="profile-card-header">
+            <div class="profile-avatar">
+              <span id="avatarInitial">U</span>
+            </div>
+            <div class="profile-card-info">
+              <h2 id="fullName">Loading...</h2>
+              <p class="username">@<span id="username">Loading...</span></p>
+            </div>
+          </div>
+          <div class="profile-card-details">
+            <div class="detail-item">
+              <span class="detail-label">Email</span>
+              <span class="detail-value" id="email">Loading...</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Campus</span>
+              <span class="detail-value" id="campus">Loading...</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Level</span>
+              <span class="detail-value" id="level">Loading...</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="charts-grid">
@@ -122,11 +145,17 @@ async function loadProfileData() {
 
     const userData = data.data.user[0];
 
-    const welcomeTitle = document.querySelector('.profile-header h2');
-    if (welcomeTitle) {
-      welcomeTitle.textContent = `Welcome, ${userData.firstName || 'User'}!`;
+    // Update welcome banner with username
+    const userNameSpan = document.getElementById('userName');
+    if (userNameSpan) {
+      userNameSpan.textContent = userData.firstName || 'User';
     }
 
+    // Update profile card
+    const avatarInitial = document.getElementById('avatarInitial');
+    if (avatarInitial && userData.firstName) {
+      avatarInitial.textContent = userData.firstName.charAt(0).toUpperCase();
+    }
 
     updateElementText(
       'fullName',
