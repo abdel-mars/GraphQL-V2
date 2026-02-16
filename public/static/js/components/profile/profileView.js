@@ -37,7 +37,7 @@ export async function renderProfileView() {
   setTimeout(() => {
     profileContent.innerHTML = `
       <div class="top-welcome">
-        <h1>Welcome <span id="userName"></span></h1>
+        <h1>| Welcome <span id="userName"></span></h1>
       </div>
 
       <div class="profile-card-section">

@@ -393,7 +393,7 @@ body.dark-theme .logout-btn:hover {
 }
 
 .top-welcome h1 span {
-  color: var(--primary);
+  color: var(--text-primary);
 }
 
 /* ============================================
