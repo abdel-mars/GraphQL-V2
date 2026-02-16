@@ -89,7 +89,21 @@ body {
   padding: 0 2rem;
   z-index: 1000;
   box-shadow: var(--shadow);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Transparent header on scroll */
+.header.transparent {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(224, 224, 224, 0.5);
+  box-shadow: none;
+  backdrop-filter: blur(10px);
+}
+
+body.dark-theme .header.transparent,
+.header.transparent.dark-theme {
+  background-color: rgba(31, 41, 55, 0.8);
+  border-color: rgba(58, 58, 92, 0.5);
 }
 
 .logo a {

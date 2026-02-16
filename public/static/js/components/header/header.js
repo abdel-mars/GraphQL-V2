@@ -71,4 +71,19 @@ export function renderHeadeer() {
       window.location.reload();
     });
   }
+
+  // Handle scroll for transparent header
+  let lastScrollY = window.scrollY;
+  
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > 50) {
+      header.classList.add('transparent');
+    } else {
+      header.classList.remove('transparent');
+    }
+    
+    lastScrollY = currentScrollY;
+  });
 }
