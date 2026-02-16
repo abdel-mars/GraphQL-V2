@@ -81,6 +81,39 @@ export function validateSignInFormData() {
       // Display success message
       displayPopup('Sign in successful!', true);
 
+      // Get existing header and update it for smooth transition
+      const header = document.getElementById('header');
+      if (header) {
+        // Remove compact class and add expanded class for smooth animation
+        header.classList.remove('compact');
+        header.classList.add('expanded');
+        // Update max-width for smooth transition
+        header.style.maxWidth = '1400px';
+        
+        // Add logout button to header controls
+        const headerControls = header.querySelector('.header-controls');
+        if (headerControls && !headerControls.querySelector('.logout-btn')) {
+          const logoutBtn = document.createElement('button');
+          logoutBtn.id = 'logoutBtn';
+          logoutBtn.className = 'logout-btn';
+          logoutBtn.textContent = 'Log Out';
+          logoutBtn.addEventListener('click', () => {
+            // Import and use logout from jwt utils
+            import('../../utils/jwt.js').then(({ logout }) => {
+              logout();
+              window.location.reload();
+            });
+          });
+          headerControls.appendChild(logoutBtn);
+        }
+      }
+      
+      // Remove footer after login (if it exists)
+      const footer = document.getElementById('footer');
+      if (footer) {
+        footer.remove();
+      }
+
       // Redirect to profile page
       renderProfileView();
 

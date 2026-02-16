@@ -1,23 +1,33 @@
 import { toggleTheme } from '../../utils/theme.js';
 import { logout } from '../../utils/jwt.js';
 
-export function renderHeadeer() {
-    const app = document.getElementById('app');
-    const header = document.createElement('header');
-    header.className = 'header';
-    header.id = 'header';
+export function renderHeader(isCompact = false) {
+  const existingHeader = document.getElementById('header');
+  if (existingHeader) {
+    existingHeader.remove();
+  }
 
-    //checkTheme in localStorage
-    const savedTheme = localStorage.getItem('theme');
-    const isDark = savedTheme === 'dark' || document.body.classList.contains('dark-theme');
-    if (isDark) {
-        header.classList.add('dark-theme');
-    }
+  const app = document.getElementById('app');
+  const header = document.createElement('header');
+  header.className = 'header';
+  header.id = 'header';
 
-    // Check if user is logged in
-    const isLoggedIn = localStorage.getItem('jwt') !== null;
+  // Add compact class if specified
+  if (isCompact) {
+    header.classList.add('compact');
+  }
 
-    header.innerHTML = `
+  //checkTheme in localStorage
+  const savedTheme = localStorage.getItem('theme');
+  const isDark = savedTheme === 'dark' || document.body.classList.contains('dark-theme');
+  if (isDark) {
+    header.classList.add('dark-theme');
+  }
+
+  // Check if user is logged in
+  const isLoggedIn = localStorage.getItem('jwt') !== null;
+
+  header.innerHTML = `
     <div class="logo">
       <a href="#" id="homeLink">
         <img src="static/svg/01.svg" alt="GraphQL Logo" class="logo-svg">

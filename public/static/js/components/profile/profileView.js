@@ -1,5 +1,6 @@
 import { logout } from "../../utils/jwt.js";
 import { displayPopup } from "../../utils/popup.js";
+import { renderFooter } from "../footer/footer.js";
 import { BarGraph } from "../graphs/barGraph.js";
 import { LineGraph } from "../graphs/lineGraph.js";
 import { PieChart } from "../graphs/pieChart.js";
@@ -129,6 +130,9 @@ export async function renderProfileView() {
         </div>
       </div>
     `;
+
+    // Render footer after profile UI is shown
+    renderFooter();
 
 // Load profile data
     loadProfileData();

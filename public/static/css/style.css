@@ -90,7 +90,55 @@ body {
   padding: 0 2rem;
   z-index: 1000;
   box-shadow: var(--shadow);
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, height 0.5s cubic-bezier(0.4, 0, 0.2, 1), width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Compact header for signin page - matches form width */
+.header.compact {
+  height: 45px;
+  width: calc(100% - 40px);
+  max-width: 440px;
+}
+
+/* Expanded header after login - matches profile card width */
+.header.expanded {
+  height: 60px;
+  width: calc(100% - 40px);
+  max-width: 1400px;
+}
+
+/* Header user profile - hidden by default */
+.header-user-profile {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header.expanded .header-user-profile {
+  display: flex;
+}
+
+.header-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.header-avatar span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.header-user-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
 }
 
 /* Transparent header on scroll */
