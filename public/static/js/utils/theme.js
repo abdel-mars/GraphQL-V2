@@ -1,6 +1,7 @@
 export function toggleTheme() {
     const header = document.getElementById('header');
     const body = document.body;
+    const themeToggler = document.getElementById('themeToggler');
 
     if (!header) {
         console.error('Header element not found');
@@ -9,6 +10,11 @@ export function toggleTheme() {
 
     header.classList.toggle('dark-theme');
     body.classList.toggle('dark-theme');
+
+    // Toggle the active class on the theme toggler to change the icon
+    if (themeToggler) {
+        themeToggler.classList.toggle('active');
+    }
 
     const isDarkTheme = body.classList.contains('dark-theme');
     if (isDarkTheme) {
