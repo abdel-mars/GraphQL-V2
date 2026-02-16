@@ -32,6 +32,26 @@ export function renderHeadeer() {
   `;
       app.appendChild(header);
 
+  // Set icon colors after box-icon elements are created
+  setTimeout(() => {
+    const sunIcon = document.querySelector('.theme-toggler .sun');
+    const moonIcon = document.querySelector('.theme-toggler .moon');
+    
+    if (sunIcon && sunIcon.shadowRoot) {
+      const sunSvg = sunIcon.shadowRoot.querySelector('svg');
+      if (sunSvg) {
+        sunSvg.style.fill = '#ffffff';
+      }
+    }
+    
+    if (moonIcon && moonIcon.shadowRoot) {
+      const moonSvg = moonIcon.shadowRoot.querySelector('svg');
+      if (moonSvg) {
+        moonSvg.style.fill = '#000000';
+      }
+    }
+  }, 100);
+
   // Add event listeners for navigation
   document.getElementById('homeLink').addEventListener('click', (e) => {
     e.preventDefault();

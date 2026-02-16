@@ -128,18 +128,23 @@ body {
 /* Default (Light Mode) - Show Moon */
 .theme-toggler .sun {
   display: none;
-  color: var(--icon-sun);
 }
 
 .theme-toggler .moon {
   display: block;
-  color: var(--icon-moon);
+}
+
+.theme-toggler .moon svg {
+  fill: #000000 !important;
 }
 
 /* Dark Mode - Show Sun */
 .theme-toggler.active .sun {
   display: block;
-  color: var(--icon-sun);
+}
+
+.theme-toggler.active .sun svg {
+  fill: #ffffff !important;
 }
 
 .theme-toggler.active .moon {
