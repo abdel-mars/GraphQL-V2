@@ -74,12 +74,15 @@ body {
    ============================================ */
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 1400px;
   height: 60px;
   background-color: var(--header-bg);
-  border-bottom: 1px solid var(--header-border);
+  border: 1px solid var(--header-border);
+  border-radius: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -553,6 +556,7 @@ body {
   
   .header {
     padding: 0 1rem;
+    width: calc(100% - 20px);
   }
   
   .logo a {
