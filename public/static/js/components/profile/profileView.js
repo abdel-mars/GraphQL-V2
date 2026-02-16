@@ -1,5 +1,11 @@
-import { logout } from "../../utils/jwt";
-import { displayPopup } from "../../utils/popup";
+import { logout } from "../../utils/jwt.js";
+import { displayPopup } from "../../utils/popup.js";
+import { BarGraph } from "../graphs/barGraph.js";
+import { LineGraph } from "../graphs/lineGraph.js";
+import { PieChart } from "../graphs/pieChart.js";
+import { SpiderChart } from "../graphs/spiderChart.js";
+import { USER_PROFILE_QUERY } from "../../api/queries.js";
+import { fetchGraphQLData } from "../../api/client.js";
 
 
 
@@ -9,7 +15,7 @@ export async function renderProfileView() {
 
     //remove existing content
     const existingContent = document.querySelector(
-        '.sign-in-container, .profile-container, .about-container, .sidebar, .profile-layout'
+        '.signin-container, .sign-in-container, .profile-container, .about-container, .sidebar, .profile-layout'
     );
     if (existingContent) {
         existingContent.remove();
@@ -32,11 +38,15 @@ export async function renderProfileView() {
     profileContent.innerHTML = `
       <div class="profile-header">
         <h2>Welcome to Your Profile</h2>
-        <button id="logoutBtn" class="logout-btn">Log Out</button>
       </div>
 
-        <div class="profile-info">
-          <div id="spider-chart" class="profile-section">
+      <div class="welcome-message">
+        <h1>Welcome to Your Dashboard</h1>
+        <p>Track your progress, view your stats, and explore your achievements</p>
+      </div>
+
+      <div class="charts-grid">
+        <div id="spider-chart" class="profile-section">
           <h3>Best Skills</h3>
           <div class="spider-chart-container">
             <div id="spiderChart" class="chart-container"></div>
@@ -69,44 +79,35 @@ export async function renderProfileView() {
           </div>
           <div id="projectGraph" class="chart-container"></div>
         </div>
+      </div>
 
-        <div id="completed-projects" class="profile-section">
-          <h3>Completed Projects</h3>
-          <div class="completed-projects-grid" id="completedProjectsGrid">
-            <div class="projects-list">
-              <p>Loading completed projects...</p>
-            </div>
+      <div id="completed-projects" class="profile-section">
+        <h3>Completed Projects</h3>
+        <div class="completed-projects-grid" id="completedProjectsGrid">
+          <div class="projects-list">
+            <p>Loading completed projects...</p>
           </div>
         </div>
+      </div>
 
-        <div id="current-projects" class="profile-section">
-          <h3>Current Projects</h3>
-          <div class="current-projects-grid" id="currentProjectsGrid">
-            <div class="projects-list">
-              <p>Loading current projects...</p>
-            </div>
+      <div id="current-projects" class="profile-section">
+        <h3>Current Projects</h3>
+        <div class="current-projects-grid" id="currentProjectsGrid">
+          <div class="projects-list">
+            <p>Loading current projects...</p>
           </div>
         </div>
+      </div>
 
-        <div id="skills" class="profile-section">
-          <h3>Skills</h3>
-          <div class="skills-container">
-            <div id="skillsGraph" class="chart-container"></div>
-          </div>
-        </div>
+      <div id="skills" class="profile-section">
+        <h3>Skills</h3>
+        <div class="skills-container">
+          <div id="skillsGraph" class="chart-container"></div>
         </div>
       </div>
     `;
 
-// Add event listener for logout button
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', () => {
-        logout();
-        window.location.reload();
-      });
-    }
-
+// Load profile data
     loadProfileData();
   }, 1000);
 }
@@ -216,7 +217,7 @@ async function loadProfileData() {
 
     updateElementText('totalUpvotes', totalUp.toString());
     updateElementText('totalDownvotes', totalDown.toString());
-    updateElementText('auditRatio', auditRatio.toString());
+    updateElementText('auditRatio', typeof auditRatio === 'number' ? auditRatio.toFixed(2) : auditRatio.toString());
 
     // Create and render the pie chart for audit ratio
     const auditRatioChart = document.getElementById('auditRatioChart');

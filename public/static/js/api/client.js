@@ -1,6 +1,6 @@
-import { getJwt } from "../utils/jwt";
-import { displayPopup } from "../utils/popup";
-import { renderSignInView } from "../components/auth/signinView";
+import { getJwt } from "../utils/jwt.js";
+import { displayPopup } from "../utils/popup.js";
+import { renderSignInView } from "../components/auth/signinView.js";
 
 export async function fetchGraphQLData(query) {
   const jwt = getJwt();

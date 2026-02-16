@@ -1,6 +1,7 @@
 import { setJwt } from '../../utils/jwt.js';
-import { renderProfileView } from '../../profile/profileView.js';
+// import { renderProfileView } from '/../profile/profileView.js';
 import { displayPopup } from '../../utils/popup.js';
+import { renderProfileView } from '../profile/profileView.js';
 
 export function validateSignInFormData() {
     const signInForm = document.getElementById('signinForm');

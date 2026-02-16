@@ -1,8 +1,9 @@
 import { renderHeadeer } from './components/header/header.js';
 import { initTheme } from './utils/theme.js';
 import { isLoggedIn } from './utils/jwt.js';
-// import { renderProfileView } from './views/profileView.js';
-// import { renderSignInView } from './views/signInView.js';
+import { renderProfileView } from './components/profile/profileView.js';
+import { renderSignInView } from './components/auth/signinView.js';
+
 //init the app
 
 export function initApp() {

@@ -5,7 +5,7 @@ export function renderSignInView() {
 
   // Remove existing content
   const existingContent = document.querySelector(
-    '.signin-container, .profile-container, .about-container, .sidebar, .profile-layout'
+    '.signin-container, .sign-in-container, .profile-container, .about-container, .sidebar, .profile-layout'
   );
   if (existingContent) {
     existingContent.remove();
