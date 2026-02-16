@@ -7,6 +7,7 @@ export const USER_PROFILE_QUERY = `query{
     login
     email
     campus
+    avatarUrl
 #     Audits
     auditRatio
     totalUp

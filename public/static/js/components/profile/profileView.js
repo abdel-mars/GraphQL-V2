@@ -43,8 +43,9 @@ export async function renderProfileView() {
 
       <div class="profile-card-section">
         <div class="profile-card">
-          <div class="profile-card-header">
+<div class="profile-card-header">
             <div class="profile-avatar">
+              <img id="avatarImage" src="" alt="Profile Avatar" style="display: none;">
               <span id="avatarInitial">U</span>
             </div>
             <div class="profile-card-info">
@@ -155,10 +156,28 @@ async function loadProfileData() {
       userNameSpan.textContent = userData.firstName || 'User';
     }
 
-    // Update profile card
+    // Update profile card - handle avatar image
+    const avatarImage = document.getElementById('avatarImage');
     const avatarInitial = document.getElementById('avatarInitial');
-    if (avatarInitial && userData.firstName) {
-      avatarInitial.textContent = userData.firstName.charAt(0).toUpperCase();
+    
+    if (userData.avatarUrl) {
+      // User has an avatar image - show it
+      if (avatarImage) {
+        avatarImage.src = userData.avatarUrl;
+        avatarImage.style.display = 'block';
+      }
+      if (avatarInitial) {
+        avatarInitial.style.display = 'none';
+      }
+    } else {
+      // No avatar image - show initial
+      if (avatarImage) {
+        avatarImage.style.display = 'none';
+      }
+      if (avatarInitial && userData.firstName) {
+        avatarInitial.textContent = userData.firstName.charAt(0).toUpperCase();
+        avatarInitial.style.display = 'flex';
+      }
     }
 
     updateElementText(
