@@ -184,19 +184,6 @@ body.dark-theme .logo-text {
   color: #ffffff;
 }
 
-.logo a:hover .logo-text {
-  color: #333333;
-  opacity: 0.8;
-}
-
-body.dark-theme .logo-svg {
-  filter: brightness(0) invert(1);
-}
-
-body.dark-theme .logo-text {
-  color: #ffffff;
-}
-
 .header-controls {
   display: flex;
   align-items: center;
