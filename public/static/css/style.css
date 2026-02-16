@@ -241,7 +241,7 @@ body.dark-theme .logout-btn:hover {
   align-items: center;
   min-height: calc(100vh - 70px);
   padding: 2rem;
-  background-color: var(--bg-secondary);
+  /* background-color: var(--bg-secondary); */
 }
 
 .form-container {
