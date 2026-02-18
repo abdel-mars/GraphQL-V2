@@ -250,7 +250,9 @@ All charts are built from scratch using SVG, providing:
 
 ## Screenshots
 
-*(Add screenshots of your application here)*
+| Sign In | Dashboard | Skills |
+|:-------:|:---------:|:------:|
+| ![Sign In](./docs/static/svg/sc3.png) | ![Dashboard](./docs/static/svg/sc1.png) | ![Skills](./docs/static/svg/sc2.png) |
 
 ---
 
